@@ -10,7 +10,9 @@ import SearchBar from './SearchBar';
 export const Header = () => {
 
     const { login, setCurrentUser, currentUser } = useContext(AuthContext);
-    let user = JSON.parse(currentUser);
+    console.log(currentUser, " this is current user")
+    let user = '';
+    if (currentUser) { user = currentUser };
 
 
     return (

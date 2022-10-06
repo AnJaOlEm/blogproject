@@ -23,7 +23,7 @@ export const Addpost = () => {
 
     const { login, setCurrentUser, currentUser } = useContext(AuthContext);
 
-    let user = JSON.parse(currentUser);
+    let user = currentUser;
 
     fetch("http://localhost:8000/api/user")
 
