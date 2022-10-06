@@ -5,12 +5,14 @@ import blogRoute from "../backend/routes/blogposts.js"
 import cors from 'cors';
 import createTable from './createTables.js'
 
+
 const app = express();
 
 app.use(cors())
 
 app.use(express.json());
 createTable();
+
 
 
 

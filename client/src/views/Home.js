@@ -23,18 +23,18 @@ const Home = () => {
         return res.json();
     }
 
-    console.log(blogPosts, " this empty?")
+    //console.log(blogPosts, " this empty?")
 
     const listPosts = blogPosts.map((post, i) => {
         return (<li key={i}><PostsHomePage blog={post} /></li>)
     })
 
 
-    console.log(blogPosts, " tho s o s ")
+    //console.log(blogPosts, " tho s o s ")
 
 
     const getLocalStorage = localStorage.getItem('jwt');
-    console.log(getLocalStorage, " <-----------------")
+    //console.log(getLocalStorage, " <-----------------")
     const navigate = useNavigate();
 
     //if (getLocalStorage) 

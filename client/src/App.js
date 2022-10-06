@@ -12,7 +12,19 @@ import { useState, useEffect } from "react";
 import { Addpost } from "./views/Addpost";
 import { ReadMoreBlog } from "./views/ReadMoreBlog";
 
+import React, { useContext } from 'react';
+import { AuthContext } from "./context";
+
+
 function App() {
+
+  const { currentUser, login, setCurrentUser } = useContext(AuthContext);
+
+
+
+  let user = localStorage.getItem("user")
+  user ? console.log(user, " this is user") : console.log("user is empty")
+
 
   const router = createBrowserRouter([
     {
@@ -46,12 +58,21 @@ function App() {
 
   ]);
 
+  useEffect(() => {
+    let user = localStorage.getItem("user")
+    if (user) setCurrentUser(user)
+  }, [])
+
 
 
   return (
+
     <div>
+
       <RouterProvider router={router} />
+
     </div>
+
   );
 }
 
