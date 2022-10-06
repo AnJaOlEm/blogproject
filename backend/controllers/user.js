@@ -22,8 +22,9 @@ export async function listUsers(req, res,) {
 
 
 export async function getUsers(req, res) {
+    let id = parseInt(req.params.id);
     const query = 'SELECT * FROM users WHERE id = $1::INT';
-    let user = await db.query(query, [req.body.id]);
+    let user = await db.query(query, [id]);
     if (res) res.json(user)
 }
 
@@ -33,6 +34,13 @@ export async function getUserByJwt(req, res) {
     const query = 'SELECT * FROM users WHERE id = $1::INT';
     let user = await db.query(query, [decodedJwt.id])
     res.json(user)
+}
+
+export async function getUser(req, res) {
+    let value = parseInt(req.params.id)
+    let query = 'SELECT * FROM users WHERE user_id = $1::INT'
+    let response = await db.query(query, [value])
+    res.json(response)
 }
 
 // GRANT SELECT ON users TO PUBLIC;

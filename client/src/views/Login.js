@@ -42,7 +42,7 @@ const Login = () => {
             .then((res) => {
                 localStorage.setItem("jwt", res.token);
                 setCurrentUser(res.user);
-                console.log(currentUser, " current user")
+                localStorage.setItem("user", JSON.stringify(res.user))
                 navigate("/")
             })
     };
