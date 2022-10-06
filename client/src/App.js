@@ -10,6 +10,7 @@ import ListUsers from "./views/ListUsers"
 import Blog from "./views/Blog";
 import { useState, useEffect } from "react";
 import { Addpost } from "./views/Addpost";
+import { ReadMoreBlog } from "./views/ReadMoreBlog";
 
 function App() {
 
@@ -37,7 +38,12 @@ function App() {
     {
       path: "/addpost",
       element: <Addpost />
+    },
+    {
+      path: "/readmore:id",
+      element: <ReadMoreBlog />
     }
+
   ]);
 
 
