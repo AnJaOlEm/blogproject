@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import styles from '../css//Header.css';
+import '../css//Header.css';
 import Sidebar from './Sidebar';
 import SearchBar from './SearchBar';
 

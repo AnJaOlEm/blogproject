@@ -57,7 +57,7 @@ async function getUserPosts(request, response) {
 }
 
 export async function getAllPosts(req, res) {
-    console.log("we get in??")
+    // console.log("we get in??")
     const query = "SELECT * FROM blog;"
 
     db.query(query, (err, data) => {

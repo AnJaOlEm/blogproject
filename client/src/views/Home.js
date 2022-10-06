@@ -4,7 +4,7 @@ import { AuthContext } from '../context';
 import ReadMoreBtn from '../components/ReadMoreBtn';
 import { Header } from '../components/Header';
 import PostsHomePage from '../components/PostsHomePage';
-import styles from '../css/Home.css';
+import '../css/Home.css';
 
 
 

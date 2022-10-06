@@ -1,7 +1,7 @@
 import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import { Link } from "react-router-dom";
-import styles from '../css/sidebar.css';
+import '../css/sidebar.css';
 
 
 const Sidebar = () => {

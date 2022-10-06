@@ -4,7 +4,7 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
-import styles from '../css/Addpost.css'
+import '../css/Addpost.css'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context';
 
@@ -16,7 +16,6 @@ export const Addpost = () => {
     const [tags, setTags] = React.useState('');
     const [ingress, setIngress] = React.useState('');
     const [imageUrl, setImageUrl] = React.useState('');
-
     const inputFileRef = React.useRef(null);
 
     const navigate = useNavigate();
@@ -127,6 +126,7 @@ export const Addpost = () => {
                     onChange={(e) => setIngress(e.target.value)}
                     fullWidth
                 />
+                
                 <SimpleMDE
                     className="editor"
                     value={value}
