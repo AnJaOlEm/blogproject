@@ -13,7 +13,7 @@ function Post({ post }) {
 
     const { login, setCurrentUser, currentUser } = useContext(AuthContext);
 
-    console.log(post.user_id, " what we get here?")
+    //console.log(post.user_id, " what we get here?")
 
     async function getAuthor() {
         fetch("http://localhost:8000/api/users/getuser/" + post.user_id)

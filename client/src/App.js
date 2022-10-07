@@ -23,7 +23,7 @@ function App() {
 
 
   let user = localStorage.getItem("user")
-  user ? console.log(user, " this is user") : console.log("user is empty")
+  //user ? console.log(user, " this is user") : console.log("user is empty")
 
 
   const router = createBrowserRouter([

@@ -31,3 +31,8 @@
     height: 80px;
 
 }
+
+.no-posts {
+    text-align: center;
+    font-size: larger;
+}

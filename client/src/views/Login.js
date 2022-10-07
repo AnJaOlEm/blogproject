@@ -26,7 +26,7 @@ const Login = () => {
 
     const handleUserInputs = (e) => {
 
-        console.log(e.target.value, " <-------------")
+        //console.log(e.target.value, " <-------------")
         setUserCredentials(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
 
@@ -40,7 +40,7 @@ const Login = () => {
         // add then som veriferar jwt och tar och sätter användaren som currentuser i context.
         login(data)
             .then((res) => {
-                console.log((res), " what do i get hrere??????????")
+                //console.log((res), " what do i get hrere??????????")
                 if ((typeof res) === "object") {
                     localStorage.setItem("jwt", res.token);
                     setCurrentUser(res.user);

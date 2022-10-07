@@ -28,7 +28,7 @@ export const ReadMoreBlog = () => {
     }, [])
 
     async function getBlogPost() {
-        console.log("We here?")
+        //console.log("We here?")
         let blogId = location.pathname.split("/")[2];
         let response = await fetch("http://localhost:8000/api/blog/" + blogId).then(res => res.json()).then(data => setCurrenPost(data)).finally()
 
@@ -69,8 +69,10 @@ export const ReadMoreBlog = () => {
                         <h3>{currentPost.ingress}</h3>
 
                         <div className="blog-post-text">
-                            {currentPost.content}
-                            <p id="author-name">{author.username}</p>
+                            <p className='blog-test'>{currentPost.content}</p>
+                            <br />
+                            <br />
+                            <p id="author-name">Author: {author.username}</p>
                         </div>
                         {currentUser.user_id === author.user_id ? <div><button onClick={handelDelete}>Delete</button> <button onClick={() => navigate("/")}>Home</button></div>
                             : <button onClick={() => navigate("/")}>Home</button>}

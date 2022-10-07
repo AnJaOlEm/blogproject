@@ -62,18 +62,18 @@ const Home = () => {
         navigate("/login")
     }
 
-    console.log(authorId, " authoid")
+    //console.log(authorId, " authoid")
 
     return (
 
         <>
             < Header />
             {blogPosts.length > 0 ? blogPosts.map((post, i) => (
-                console.log(post, "       i --->", i, " this is post"),
+                //console.log(post, "       i --->", i, " this is post"),
                 <div key={i}>
                     <Post post={post} />
                 </div>
-            )) : <div>No posts found</div>
+            )) : <div className='no-posts'>No posts found</div>
             }
         </>
     );
