@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ReadMoreBtn from './ReadMoreBtn'
+import { useLocation } from 'react-router-dom'
 
 export default function PostsHomePage({ blog }) {
     //console.log(blog, " this is blog ocmps")
@@ -10,6 +11,9 @@ export default function PostsHomePage({ blog }) {
     useEffect(() => {
         getAuthor()
     })
+
+    const location = useLocation()
+    const { author } = location.state
 
 
     const getAuthor = async (req, res) => {
@@ -26,7 +30,7 @@ export default function PostsHomePage({ blog }) {
         <div>
             <h1>title: {blog.title}</h1>
             <h2>ingress: {blog.ingress}</h2>
-            <h3>author : {user.username}</h3>
+            <h3>author : {author.username}</h3>
             <p>email: {user.email}</p>
             <ReadMoreBtn />
             <br />

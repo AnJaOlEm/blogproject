@@ -10,11 +10,13 @@ export const ReadMoreBlog = () => {
     }, []);
 
     const [currentPost, setCurrenPost] = useState();
-    const [author, setAuthor] = useState();
+    //const [author, setAuthor] = useState();
+
 
     const navigate = useNavigate();
 
     let location = useLocation();
+    const { author } = location.state
 
     useEffect(() => {
         getBlogPost()
@@ -30,21 +32,26 @@ export const ReadMoreBlog = () => {
 
     }
 
-    async function getAuthor() {
+    // async function getAuthor() {
 
-        let userId
-        if (currentPost) {
-            userId = currentPost.user_id;
-            let response = await fetch("http://localhost:8000/api/users/getuser/" + userId).then(res => res.json()).then(data => setAuthor(data.rows))
-        }
-    }
+    //     let userId
+    //     if (currentPost) {
+    //         userId = currentPost.user_id;
+    //         let response = await fetch("http://localhost:8000/api/users/getuser/" + userId).then(res => res.json()).then(data => setAuthor(data.rows))
+    //     }
+    // }
 
 
     async function handelDelete() {
-        await fetch("http://localhost:8000/api/blog/" + currentPost.blog_id, {
-            method: 'DELETE',
-        }).then(res => res.json())
-            .then(res => console.log(res)).finally(navigate("/"))
+        let currentUser = JSON.parse(localStorage.getItem("user"))
+
+        if (currentUser.user_id === author.user_id) {
+
+            await fetch("http://localhost:8000/api/blog/" + currentPost.blog_id, {
+                method: 'DELETE',
+            }).then(res => res.json())
+                .then(res => console.log(res)).finally(navigate("/"))
+        }
     }
 
     return (
@@ -57,7 +64,7 @@ export const ReadMoreBlog = () => {
 
                     <div className="blog-post-text">
                         {currentPost.content}
-                        <p id="author-name"></p>
+                        <p id="author-name">{author.username}</p>
                     </div>
                     <button onClick={handelDelete}>Delete</button>
 
