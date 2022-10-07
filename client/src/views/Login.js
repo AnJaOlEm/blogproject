@@ -40,10 +40,15 @@ const Login = () => {
         // add then som veriferar jwt och tar och sätter användaren som currentuser i context.
         login(data)
             .then((res) => {
-                localStorage.setItem("jwt", res.token);
-                setCurrentUser(res.user);
-                localStorage.setItem("user", JSON.stringify(res.user))
-                navigate("/")
+                console.log((res), " what do i get hrere??????????")
+                if ((typeof res) === "object") {
+                    localStorage.setItem("jwt", res.token);
+                    setCurrentUser(res.user);
+                    localStorage.setItem("user", JSON.stringify(res.user))
+                    navigate("/")
+                } else {
+                    navigate("/")
+                }
             })
     };
 

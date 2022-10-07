@@ -31,11 +31,11 @@ export async function createPost(req, res) {
 
 }
 
-async function deletePost(request, response) {
+export async function deletePost(request, response) {
     let id = parseInt(request.params.id);
 
     const query =
-        'DELETE FROM users WHERE id = $1::INT';
+        'DELETE FROM blog WHERE blog_id = $1::INT';
     const values = [id];
     let res = await db.query(query, values);
 
@@ -57,13 +57,31 @@ async function getUserPosts(request, response) {
 }
 
 export async function getAllPosts(req, res) {
-    console.log("we get in??")
     const query = "SELECT * FROM blog;"
 
     db.query(query, (err, data) => {
-        if (err) return res.status(401).json("There was an error")
-        res.status(200).json(data.rows)
-    })
+        if (err) return res.status(500).send(err);
+
+        return res.status(200).json(data);
+    });
+
+
+
+}
+export async function getPost(req, res) {
+
+    const query = "SELECT * FROM blog WHERE blog_id = $1::INT"
+    let values = parseInt(req.params.id)
+
+    console.log(values)
+
+
+    db.query(query, [values], (err, data) => {
+        if (err) return res.status(500).json(err);
+
+        return res.status(200).json(data.rows[0]);
+    });
+
 }
 
 

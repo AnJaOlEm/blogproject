@@ -6,22 +6,18 @@ export default function PostsHomePage({ blog }) {
     const [user, setUser] = useState({})
 
 
-
+    console.log(blog, " thi si  blog")
     useEffect(() => {
-        getAuthor().then(res => {
-            setUser({
-                username: res.rows[0].username,
-                email: res.rows[0].email
-            })
-        })
+        getAuthor()
     })
+
 
     const getAuthor = async (req, res) => {
         let userId = blog.user_id;
         let user = await fetch("http://localhost:8000/api/users/getuser/" + userId,)
             .then(res => res.json())
 
-        return user;
+        setUser(user)
 
     }
 

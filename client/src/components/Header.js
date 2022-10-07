@@ -14,6 +14,11 @@ export const Header = () => {
     let user = '';
     if (currentUser) { user = currentUser };
 
+    async function logoutUser() {
+        localStorage.clear()
+        setCurrentUser(null);
+    }
+
 
     return (
         <div className='header'>
@@ -25,7 +30,10 @@ export const Header = () => {
                 </div>
                 <div className='searchLoginBlock'>
                     <SearchBar />
-                    {currentUser ? <Link className='loginButton' to={"/addpost"}>Add post a post {user.username}</Link> :
+                    {currentUser ? <div>
+                        <Link className='loginButton' onClick={logoutUser}>logout {user.username}</Link>
+                        <Link className='loginButton' to={"/addpost"}>Add post a post {user.username}</Link>
+                    </div> :
                         <Link className='loginButton' to={'/login'}>Login</Link>}
                 </div>
             </div>

@@ -17,9 +17,7 @@ const Sidebar = () => {
 
       <Link to={'/login'}>Logga in</Link>
 
-      <a className="menu-item" href="./Blogpost.js">
-        Annat exempel
-      </a>
+
     </Menu>
   );
 };

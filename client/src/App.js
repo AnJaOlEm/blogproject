@@ -52,15 +52,15 @@ function App() {
       element: <Addpost />
     },
     {
-      path: "/readmore:id",
+      path: "/readmore/:id",
       element: <ReadMoreBlog />
-    }
+    },
 
   ]);
 
   useEffect(() => {
     let user = localStorage.getItem("user")
-    if (user) setCurrentUser(user)
+    if (user) setCurrentUser(JSON.parse(user))
   }, [])
 
 

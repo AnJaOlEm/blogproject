@@ -23,14 +23,16 @@ export const Addpost = () => {
 
     const { login, setCurrentUser, currentUser } = useContext(AuthContext);
 
-    let user = currentUser;
+    console.log(currentUser.user_id, " here we got something?")
 
-    fetch("http://localhost:8000/api/user")
+    let lStorage = JSON.parse(localStorage.getItem("user"))
+
+
 
 
     const handleAddPost = async () => {
 
-        const data = { title: title, ingress: ingress, content: value, user_id: user.user_id }
+        const data = { title: title, ingress: ingress, content: value, user_id: lStorage.user_id }
 
         fetch("http://localhost:8000/api/blog/test", {
             method: 'POST',
