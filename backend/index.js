@@ -13,11 +13,6 @@ app.use(cors())
 app.use(express.json());
 createTable();
 
-
-
-
-
-
 app.use("/api/users", userRoute)
 app.use("/api/auth", authRoute)
 app.use("/api/blog", blogRoute)

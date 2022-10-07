@@ -74,8 +74,8 @@ export const ReadMoreBlog = () => {
                             <br />
                             <p id="author-name">Author: {author.username}</p>
                         </div>
-                        {currentUser.user_id === author.user_id ? <div><button onClick={handelDelete}>Delete</button> <button onClick={() => navigate("/")}>Home</button></div>
-                            : <button onClick={() => navigate("/")}>Home</button>}
+                        {currentUser ? currentUser.user_id === author.user_id ? <div><button onClick={handelDelete}>Delete</button> <button onClick={() => navigate("/")}>Home</button></div>
+                            : <button onClick={() => navigate("/")}>Home</button> : <button onClick={() => navigate("/")}>Home</button>}
 
                     </div>
 
