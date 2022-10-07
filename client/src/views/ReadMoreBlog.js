@@ -32,6 +32,8 @@ export const ReadMoreBlog = () => {
 
     }
 
+    let currentUser = JSON.parse(localStorage.getItem("user"))
+
     // async function getAuthor() {
 
     //     let userId
@@ -43,7 +45,7 @@ export const ReadMoreBlog = () => {
 
 
     async function handelDelete() {
-        let currentUser = JSON.parse(localStorage.getItem("user"))
+
 
         if (currentUser.user_id === author.user_id) {
 
@@ -66,7 +68,8 @@ export const ReadMoreBlog = () => {
                         {currentPost.content}
                         <p id="author-name">{author.username}</p>
                     </div>
-                    <button onClick={handelDelete}>Delete</button>
+                    {currentUser.user_id === author.user_id ? <div><button onClick={handelDelete}>Delete</button> <button onClick={() => navigate("/")}>Home</button></div>
+                        : <button onClick={() => navigate("/")}>Home</button>}
 
                 </div>
 
