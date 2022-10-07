@@ -1,6 +1,8 @@
 import styles from '../css/ReadMoreBlog.css';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom'
+import { Header } from '../components/Header';
+
 
 
 export const ReadMoreBlog = () => {
@@ -58,23 +60,25 @@ export const ReadMoreBlog = () => {
 
     return (
 
-        <>  {currentPost ?
-            <div className='container'>
-                <div className="example-blog-post">
-                    <h2 id="title">{currentPost.title}</h2>
-                    <h3>{currentPost.ingress}</h3>
+        <>
+            <Header />
+            {currentPost ?
+                <div className='container'>
+                    <div className="example-blog-post">
+                        <h2 id="title">{currentPost.title}</h2>
+                        <h3>{currentPost.ingress}</h3>
 
-                    <div className="blog-post-text">
-                        {currentPost.content}
-                        <p id="author-name">{author.username}</p>
+                        <div className="blog-post-text">
+                            {currentPost.content}
+                            <p id="author-name">{author.username}</p>
+                        </div>
+                        {currentUser.user_id === author.user_id ? <div><button onClick={handelDelete}>Delete</button> <button onClick={() => navigate("/")}>Home</button></div>
+                            : <button onClick={() => navigate("/")}>Home</button>}
+
                     </div>
-                    {currentUser.user_id === author.user_id ? <div><button onClick={handelDelete}>Delete</button> <button onClick={() => navigate("/")}>Home</button></div>
-                        : <button onClick={() => navigate("/")}>Home</button>}
 
                 </div>
-
-            </div>
-            : <div>loooooooooooooding</div>}
+                : <div>loooooooooooooding</div>}
         </>
     );
 }

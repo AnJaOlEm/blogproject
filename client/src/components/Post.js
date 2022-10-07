@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../context';
+import styles from '../css/Post.css'
 
 function Post({ post }) {
 
@@ -22,12 +23,12 @@ function Post({ post }) {
 
     return (
         <div>{author ?
-            <div>
-                <p>             </p>
-                <h1>{post.title}</h1>
-                <h2>{post.ingress}</h2>
-                <p>{author.username}</p>
-                <Link className="link" to={`/readmore/${post.blog_id}`} state={{ author: author }}>
+            <div className='example-blog-post'>
+                <h1 className='title'>{post.title}</h1>
+                <p>{post.ingress}</p>
+                <br />
+                <p className='author-name'>Author: {author.username}</p>
+                <Link className="read-more-btn" to={`/readmore/${post.blog_id}`} state={{ author: author }}>
                     Read More
                 </Link>
             </div>
