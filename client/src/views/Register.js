@@ -1,12 +1,14 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../context';
 
 const Register = () => {
 
     const navigate = useNavigate();
 
     const url = "http://localhost:8000/api/auth/register"
+    const { login, setCurrentUser, currentUser } = useContext(AuthContext);
 
     const [userCredentials, setUserCredentials] = useState(
         {
@@ -48,6 +50,21 @@ const Register = () => {
             .catch((error) => {
                 console.error('Error:', error);
             });
+
+        login({ username: userCredentials.username, password: userCredentials.password })
+            .then((res) => {
+                if ((typeof res) === "object") {
+                    localStorage.setItem("jwt", res.token);
+                    setCurrentUser(res.user);
+                    localStorage.setItem("user", JSON.stringify(res.user))
+                    navigate("/")
+                } else {
+                    navigate("/")
+                }
+            })
+
+
+
 
     }
 

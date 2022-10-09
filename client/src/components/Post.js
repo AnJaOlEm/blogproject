@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../context';
 import styles from '../css/Post.css'
@@ -11,9 +11,7 @@ function Post({ post }) {
         getAuthor()
     }, [])
 
-    const { login, setCurrentUser, currentUser } = useContext(AuthContext);
 
-    //console.log(post.user_id, " what we get here?")
 
     async function getAuthor() {
         fetch("http://localhost:8000/api/users/getuser/" + post.user_id)

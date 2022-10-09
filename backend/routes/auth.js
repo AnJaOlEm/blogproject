@@ -11,8 +11,6 @@ router.post("/login", login);
 router.post("/logout", logout)
 router.post("/verify", async (req, res) => {
     let response = await verifyToken(req.body.localStorage)
-    console.log(response, " ad sdas asd ads sd ad as-------------------------")
-
     res.send(response)
 })
 

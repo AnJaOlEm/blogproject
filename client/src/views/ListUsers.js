@@ -6,8 +6,6 @@ function ListUsers() {
 
     const [users, setUsers] = useState([]);
 
-
-
     async function sendPost() {
 
         let token = localStorage.getItem("jwt")
@@ -15,14 +13,6 @@ function ListUsers() {
 
         const url = "http://localhost:8000/api/users/users";
         const response = await fetch(url)
-
-        // , {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({ "jwt": token })
-        // }
 
         return response.json();
     }
@@ -35,9 +25,6 @@ function ListUsers() {
     const listUsers = users.map((user, i) => {
         return (<li key={i}>Name:{user.username} <br />Email: {user.email}</li>)
     })
-
-
-
 
 
     return (

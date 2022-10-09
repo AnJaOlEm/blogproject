@@ -1,14 +1,13 @@
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
 } from "react-router-dom";
 import Home from './views/Home';
 import Register from './views/Register';
 import Login from './views/Login';
 import ListUsers from "./views/ListUsers"
 import Blog from "./views/Blog";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Addpost } from "./views/Addpost";
 import { ReadMoreBlog } from "./views/ReadMoreBlog";
 
@@ -18,12 +17,11 @@ import { AuthContext } from "./context";
 
 function App() {
 
-  const { currentUser, login, setCurrentUser } = useContext(AuthContext);
+  const { setCurrentUser } = useContext(AuthContext);
 
 
 
   let user = localStorage.getItem("user")
-  //user ? console.log(user, " this is user") : console.log("user is empty")
 
 
   const router = createBrowserRouter([
@@ -68,9 +66,7 @@ function App() {
   return (
 
     <div>
-
       <RouterProvider router={router} />
-
     </div>
 
   );

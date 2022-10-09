@@ -17,16 +17,13 @@ const Login = () => {
 
     const [errorMessages, setErrorMessages] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
-    //const [user, setUser] = useState({});
-    //const [serverResponse, setServerResponse] = useState('');
+
 
     const navigate = useNavigate();
 
     const { login, setCurrentUser, currentUser } = useContext(AuthContext);
 
     const handleUserInputs = (e) => {
-
-        //console.log(e.target.value, " <-------------")
         setUserCredentials(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
 
@@ -37,10 +34,9 @@ const Login = () => {
             username: userCredentials.username,
             password: userCredentials.password
         }
-        // add then som veriferar jwt och tar och sätter användaren som currentuser i context.
+
         login(data)
             .then((res) => {
-                //console.log((res), " what do i get hrere??????????")
                 if ((typeof res) === "object") {
                     localStorage.setItem("jwt", res.token);
                     setCurrentUser(res.user);
@@ -92,7 +88,6 @@ const Login = () => {
         </div>
     );
 };
-
 
 
 export default Login

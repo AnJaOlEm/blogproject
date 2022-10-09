@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import ReadMoreBtn from './ReadMoreBtn'
 import { useLocation } from 'react-router-dom'
 
 export default function PostsHomePage({ blog }) {
-    //console.log(blog, " this is blog ocmps")
+
     const [user, setUser] = useState({})
 
 
-    console.log(blog, " thi si  blog")
     useEffect(() => {
         getAuthor()
     })
@@ -32,7 +30,6 @@ export default function PostsHomePage({ blog }) {
             <h2>ingress: {blog.ingress}</h2>
             <h3>author : {author.username}</h3>
             <p>email: {user.email}</p>
-            <ReadMoreBtn />
             <br />
             <br />
         </div>

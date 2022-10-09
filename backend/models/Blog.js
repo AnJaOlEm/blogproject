@@ -1,3 +1,5 @@
+//implementera
+
 export default class Blog {
     constructor(title, tag, ingress, post) {
         this.title = title;

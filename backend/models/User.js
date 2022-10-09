@@ -1,3 +1,5 @@
+// implementera
+
 export default class User {
     constructor(username, email, password) {
         this.username = username;
@@ -20,7 +22,4 @@ export default class User {
     }
 }
 
-
-//kom ihåg
-//module.exports = User;
 

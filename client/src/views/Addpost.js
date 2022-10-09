@@ -106,7 +106,6 @@ export const Addpost = () => {
                 <br />
                 <br />
                 <TextField
-                    //classes={{ root: styles.title }}
                     className="title"
                     variant="standard"
                     placeholder="Rubrik..."
@@ -115,7 +114,6 @@ export const Addpost = () => {
                     fullWidth
                 />
                 <TextField
-                    //classes={{ root: styles.tags }}
                     className="tags"
                     variant="standard"
                     placeholder="Tags"
@@ -124,7 +122,6 @@ export const Addpost = () => {
                     fullWidth
                 />
                 <TextField
-                    //classes={{ root: styles.ingress }}
                     className="ingress"
                     variant="standard"
                     placeholder="Ingress..."
