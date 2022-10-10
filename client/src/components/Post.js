@@ -16,7 +16,7 @@ function Post({ post }) {
     async function getAuthor() {
         fetch("http://localhost:8000/api/users/getuser/" + post.user_id)
             .then(res => res.json())
-            .then(data => setAuthor(data.rows[0]))
+            .then(data => setAuthor({ user_id: data.rows[0].user_id, username: data.rows[0].username }))
     }
 
     return (

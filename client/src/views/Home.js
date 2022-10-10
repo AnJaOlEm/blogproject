@@ -24,9 +24,6 @@ const Home = () => {
     }
     const navigate = useNavigate();
 
-    const handleNav = () => {
-        navigate("/login")
-    }
 
     return (
 

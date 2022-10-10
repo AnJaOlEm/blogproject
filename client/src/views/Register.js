@@ -2,6 +2,8 @@ import React from 'react'
 import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context';
+import { Link } from "react-router-dom";
+import styles from '../css/Register.css'
 
 const Register = () => {
 
@@ -10,6 +12,8 @@ const Register = () => {
     const url = "http://localhost:8000/api/auth/register"
     const { login, setCurrentUser, currentUser } = useContext(AuthContext);
 
+    const [errorMessages, setErrorMessages] = useState({});
+    const [isSubmitted, setIsSubmitted] = useState(false);
     const [userCredentials, setUserCredentials] = useState(
         {
             username: "",
@@ -68,16 +72,49 @@ const Register = () => {
 
     }
 
-    return (
-        <div>
-            <form>
-                <input placeholder='username' onChange={handleUserInputs} name='username' />
-                <input placeholder='password' onChange={handleUserInputs} name='password' />
-                <input placeholder='email' onChange={handleUserInputs} name='email' />
-                <button onClick={handleSubmit}>Register user</button>
+    const renderErrorMessage = (name) =>
+        name === errorMessages.name && (
+            <div className="error">{errorMessages.message}</div>
+        );
+
+
+    const renderForm = (
+        <div className="render-form">
+            <form onSubmit={handleSubmit}>
+                <div className="input-container">
+                    <label>Användarnamn</label>
+                    <input type="text" name="username" onChange={handleUserInputs} />
+                    {renderErrorMessage("uname")}
+                </div>
+                <div className="input-container">
+                    <label>Lösenord</label>
+                    <input type="password" name="password" required onChange={handleUserInputs} />
+                    {renderErrorMessage("pass")}
+                </div>
+                <div className="input-container">
+                    <label>Email</label>
+                    <input type="email" name="email" required onChange={handleUserInputs} />
+                    {renderErrorMessage("pass")}
+                </div>
+                <div className="button-container">
+                    <input type="submit" />
+                </div>
             </form>
         </div>
-    )
+    );
+
+    return (
+
+        <div className="form">
+            <div className="reg-form">
+                <div className="title">Registrera</div>
+                {isSubmitted ? <div >
+                    <div >Användaren är inloggad</div>
+                    <Link className="entry-message" to={'/addpostform'}>OK</Link>
+                </div> : renderForm}
+            </div>
+        </div>
+    );
 
 }
 

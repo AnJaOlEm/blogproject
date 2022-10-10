@@ -12,35 +12,50 @@ export const ReadMoreBlog = () => {
     }, []);
 
     const [currentPost, setCurrenPost] = useState();
+    const [postAuthor, setPostAuthor] = useState();
+
+    let currentUser = JSON.parse(localStorage.getItem("user"))
+
+    console.log(currentPost, " we have uid here?")
+
 
 
 
     const navigate = useNavigate();
 
     let location = useLocation();
-    const { author } = location.state
+
+    // const { author } = location.state
+
 
     useEffect(() => {
         getBlogPost()
-
-
 
     }, [])
 
     async function getBlogPost() {
         let blogId = location.pathname.split("/")[2];
-        let response = await fetch("http://localhost:8000/api/blog/" + blogId).then(res => res.json()).then(data => setCurrenPost(data)).finally()
+        let response = await fetch("http://localhost:8000/api/blog/" + blogId).then(res => res.json())
+        console.log(response, " res po nse ")
+        setCurrenPost(response);
+        getpostAuthor(response.user_id)
+
 
     }
 
-    let currentUser = JSON.parse(localStorage.getItem("user"))
+    async function getpostAuthor(id) {
+        let response = await fetch("http://localhost:8000/api/users/getuser/" + id)
+            .then(res => res.json())
+            .then(data => setPostAuthor(data.rows[0]))
+        console.log(postAuthor, " we herer now")
+    }
 
 
 
     async function handelDelete() {
 
 
-        if (currentUser.user_id === author.user_id) {
+        if (currentUser.user_id === currentPost.user_id) {
 
             await fetch("http://localhost:8000/api/blog/" + currentPost.blog_id, {
                 method: 'DELETE',
@@ -49,11 +64,13 @@ export const ReadMoreBlog = () => {
         }
     }
 
+
+
     return (
 
         <>
             <Header />
-            {currentPost ?
+            {currentPost && postAuthor ?
                 <div className='container'>
                     <div className="example-blog-post">
                         <h2 id="title">{currentPost.title}</h2>
@@ -63,9 +80,9 @@ export const ReadMoreBlog = () => {
                             <p className='blog-test'>{currentPost.content}</p>
                             <br />
                             <br />
-                            <p id="author-name">Author: {author.username}</p>
+                            <p id="author-name">Author: {postAuthor.username}</p>
                         </div>
-                        {currentUser ? currentUser.user_id === author.user_id ? <div><button onClick={handelDelete}>Delete</button> <button onClick={() => navigate("/")}>Home</button></div>
+                        {currentUser && postAuthor ? currentUser.user_id === postAuthor.user_id ? <div><button onClick={handelDelete}>Delete</button> <button onClick={() => navigate("/")}>Home</button></div>
                             : <button onClick={() => navigate("/")}>Home</button> : <button onClick={() => navigate("/")}>Home</button>}
 
                     </div>
