@@ -30,10 +30,15 @@ export const Header = () => {
                 <div className='searchLoginBlock'>
                     <SearchBar />
                     {currentUser ? <div>
-                        <Link className='loginButton' onClick={logoutUser}>logout {user.username}</Link>
-                        <Link className='loginButton' to={"/addpost"}>Add post a post {user.username}</Link>
+                        <Link className='loginButton' onClick={logoutUser}>Logout {user.username}</Link>
+                        <Link className='loginButton' to={"/addpost"}>Add post {user.username}</Link>
                     </div> :
-                        <Link className='loginButton' to={'/login'}>Login</Link>}
+                    <div>
+                    <Link className='loginButton' to={'/login'}>Login</Link>
+                    <Link className='loginButton' to={'/register'}>New user</Link>
+                    </div>}
+                   
+                        
                 </div>
             </div>
         </div>
