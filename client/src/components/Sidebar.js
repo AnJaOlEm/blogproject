@@ -10,15 +10,9 @@ const Sidebar = () => {
       <a className="menu-item" href="/">
         Hem
       </a>
-
-      <a className="menu-item" href="./register">
-        Regristrera användare
-      </a>
-
+      <Link to={'/register'}>Registrera ny användare</Link>
       <Link to={'/login'}>Logga in</Link>
-
-
-    </Menu>
+   </Menu>
   );
 };
 

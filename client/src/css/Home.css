@@ -67,3 +67,24 @@ input[type="submit"]:hover {
     text-decoration: none;
 
 }
+
+.no-posts{
+    position: absolute;
+    width: 250px;
+    height: 150px;
+    z-index: 15;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -150px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: rgba(240, 221, 217, 0.5);
+    text-align: center;
+    justify-content: center;
+}
+
+#no-post-text{
+    padding: 18%;
+    font-size: x-large;
+}
+

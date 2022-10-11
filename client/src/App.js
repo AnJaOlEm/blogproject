@@ -10,9 +10,11 @@ import Blog from "./views/Blog";
 import { useEffect } from "react";
 import { Addpost } from "./views/Addpost";
 import { ReadMoreBlog } from "./views/ReadMoreBlog";
-
 import React, { useContext } from 'react';
 import { AuthContext } from "./context";
+import { Bg } from "./components/Bg";
+
+
 
 
 function App() {
@@ -64,11 +66,13 @@ function App() {
 
 
   return (
-
-    <div>
-      <RouterProvider router={router} />
-    </div>
-
+     
+    
+     <div>
+     <Bg/>
+       <RouterProvider router={router} />
+     </div>
+   
   );
 }
 

@@ -8,6 +8,7 @@ import Post from '../components/Post';
 
 
 
+
 const Home = () => {
 
     const [blogPosts, setBlogPosts] = useState([]);
@@ -28,14 +29,18 @@ const Home = () => {
     return (
 
         <>
-            < Header />
+        <Header/>
             {blogPosts.length > 0 ? blogPosts.map((post, i) => (
                 <div key={i}>
                     <Post post={post} />
                 </div>
-            )) : <div className='no-posts'>No posts found</div>
+            )) : <div className='no-posts'>
+                <p id="no-post-text">No posts found</p>
+            </div>
             }
+            
         </>
+       
     );
 }
 
