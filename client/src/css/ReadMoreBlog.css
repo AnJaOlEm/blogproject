@@ -15,19 +15,18 @@
 }
 
 .blog-test {
-    width: 150px;
-
-    inline-size: 300px;
     overflow-wrap: break-word;
 }
 
 .blog-post-text {
     text-align: center;
+    padding: 30px;
 
 }
 
 #title {
     text-align: center;
+    padding: 30px;
 }
 
 #author-name {
