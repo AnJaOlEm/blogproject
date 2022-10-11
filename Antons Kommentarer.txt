@@ -1,0 +1,19 @@
+För att starta projektet.
+öpnna terminal
+cd backend -> skriv först 'npm install' i terminalen sedan 'node index.js'
+öppna ny terminal cd client -> skriv först i terminalen 'npm install' sedan npm start.
+
+Upplägg av projektet, vi valde att ha en map för frontend och en för backend för att lättare kunna navigera i projektet. 
+I backenden valde vi att använda oss av /api/ innan alla endpoint routers vidare till backenden. Sedan följde vi upp api med passande endpoint namn, så som users, auth  och blogposts.
+Detta för att förtydliga vart de olika endpointsen leder.
+
+Vi valde en postgres databas för att den är relationell och tanken var att vi skulle koppla ihop users och blogpost för användarens inviduella sida, där man skulle kunna se alla blogposter en viss anavändare
+skapat, vi hann dock aldrig implementera denna funktionen för sidan. Men möjligheten finns där.
+Vi använde oss av bcrypt för att kryptera lösen orden i databasen, detta för att i "verkligheten" sparas inte lösenord okrypterade, så det kändes relevant att implementera.
+
+
+tanken för inloggade användare var att spara relevant information i cookies, men stötte på problem med att webbläsaren inte ville spara cookisen vi skickade med, de visades i postman.
+Efter sökningar online så verkar det vara problem med att använda cookies när man kör i localhost och därför spara vi informationen i localstorage i stället, även om detta i ett
+riktigt projekt inte hade varit optimalt då det är en säkerhetsrisk.
+
+
